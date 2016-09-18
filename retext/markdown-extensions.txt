@@ -1,7 +1,0 @@
-codehilite
-footnotes
-meta
-tables
-toc
-mathjax
-

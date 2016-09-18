@@ -1,33 +1,26 @@
-# /dev/sda6
-UUID=6233cb29-43a9-428a-a39c-0b9440879177	/         	btrfs     	rw,relatime,ssd,space_cache,subvolid=5,subvol=/	0 1
+# /dev/sda5		the different btrfs sub_volume 
+UUID=b754f680-b9c3-433c-87cd-44b509148f5d	 /         	btrfs      	rw,relatime,compress-force=lzo,ssd,space_cache,autodefrag,subvol=@opensuse	0 1
+#UUID=b754f680-b9c3-433c-87cd-44b509148f5d	 /         	btrfs      	rw,relatime,compress-force=lzo,ssd,space_cache,autodefrag,subvol=@opensuse-  0 1
+# /dev/sda1		EFI 分区
+UUID=3675-DA6B		/boot/grub	vfat		rw,fmask=0022,dmask=0022,errors=remount-ro	0 2
 
-# /dev/sda5
-UUID=8596-9EEE      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro	0 2
+# /dev/sda8
+UUID=dd5ea128-df4a-4c98-aa4a-01dfe9f9e167	/home     	xfs       	rw,relatime,attr2,inode64,noquota	  0 2
 
-# /dev/sda7 LABEL=home
-UUID=dd5ea128-df4a-4c98-aa4a-01dfe9f9e167	/home     	xfs       	rw,relatime,attr2,inode64,noquota	0 2
-
-
-#/dev/sdb2  #uid,gid可由id+用户名得到
-UUID=B23AF8CD3AF89019           /home/viw/ir应用       ntfs-3g    auto,noatime,uid=1000,gid=1000               0 0
+#/dev/sdb2  #uid,gid  $id username
+UUID=B23AF8CD3AF89019           /home/viw/ir应用       ntfs-3g    auto,noatime,uid=1000,gid=100               0 0
 #/dev/sdb4
-UUID=0DDB188A0DDB188A            /home/viw/is尘曦     ntfs-3g    auto,noatime,uid=1000,gid=1000               0 0
+UUID=0DDB188A0DDB188A            /home/viw/is尘曦     ntfs-3g    auto,noatime,uid=1000,gid=100               0 0
 #/dev/sdb5
-UUID=744676BA46767CA4            /home/viw/it雷雨      ntfs-3g     auto,noatime,uid=1000,gid=1000                0 0
+UUID=744676BA46767CA4            /home/viw/it雷雨      ntfs-3g     auto,noatime,uid=1000,gid=100                0 0
 #/dev/sdb
-UUID=C8FAF367FAF34FE4   	      /home/viw/iw暮叶       ntfs-3g      auto,noatime,uid=1000,gid=1000         0 0
-
+UUID=C8FAF367FAF34FE4   	      /home/viw/iw暮叶       ntfs-3g      auto,noatime,uid=1000,gid=100         0 0
 
 #tmpfs  mode=6777(umask=0022)   7=1-粘滞位+2-setgid+4-setuid,缺省7
-tmpfs					/var/cache/pacman/pkg			tmpfs   defaults    					0 0
-tmpfs              			/home/viw/.cache/mozilla		tmpfs   auto,size=1024M,uid=1000,gid=1000  		0 0 
-tmpfs 		     			/home/viw/Downloads/cache    		tmpfs	auto,mode=6777,size=6144M,uid=1000,gid=1000      0 0
+tmpfs					/tmp				tmpfs   defaults,uid=1000,gid=100    									0 0
+tmpfs					/var/cache/zypp						tmpfs		defaults										0 0
+tmpfs              	/home/viw/.cache/mozilla			tmpfs   auto,size=1024M,uid=1000,gid=100  		0 0 
+tmpfs 		     	/home/viw/Downloads/cache    	tmpfs	auto,mode=6777,size=6144M,uid=1000,gid=100      0 0
 
-
-
-
-
-
-
-
-
+#advanced set mount index
+/dev/disk/by-uuid/10A6967BA69660D0 /mnt/winOS auto nosuid,nodev,nofail,noauto 0 0

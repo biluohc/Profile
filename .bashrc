@@ -28,10 +28,10 @@
 test -s ~/.alias && . ~/.alias || true
 
 #80的数字越小余额透明
-if [ -n "$WINDOWID" ]; then
-    TRANSPARENCY_HEX=$(printf 0x%x $((0xffffffff * 80 / 100)))
-    xprop -id "$WINDOWID" -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY "$TRANSPARENCY_HEX"
-fi
+#if [ -n "$WINDOWID" ]; then
+#    TRANSPARENCY_HEX=$(printf 0x%x $((0xffffffff * 88 / 100)))
+#  xprop -id "$WINDOWID" -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY "$TRANSPARENCY_HEX"
+#fi
 
 alias cdh="cd /home/viw/Downloads/cache"
 alias la="ls -ashl"
