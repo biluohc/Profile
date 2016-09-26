@@ -79,7 +79,7 @@ function mpv_r {
 	if cp -r mpv ~/.config/
 	then echo "Restore mpv was succeed"
 	#https://github.com/mpv-player/mpv/wiki/User-Scripts
-	curl -s -o ~/.config/mpv/scripts/autoload.lua  https://github.com/mpv-player/mpv/raw/master/TOOLS/lua/autoload.lua &&echo "Update lua scripts was succeed by cURL"
+	curl -s -o ~/.config/mpv/scripts/autoload.lua  https://raw.githubusercontent.com/mpv-player/mpv/master/TOOLS/lua/autoload.lua &&echo "Update lua scripts was succeed by cURL"
 	fi
 }
 ##
