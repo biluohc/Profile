@@ -11,7 +11,7 @@ def mkextractdir(zipfile):
     if  extractdir == "":
         stderr_print("\"{}\" {}".format(everyfile,"is not has \".zip\" ext-name !"))
 
-    if os.path.exists(extractdir) and  not os.path.isdir(extractdir):
+    if not os.path.isdir(extractdir):
         stderr_print("\"{}\" {}".format(everyfile,"already is exists and not a dir , exit !!"))
 
     if not os.path.exists(extractdir):
@@ -47,9 +47,10 @@ def stderr_print(msg):
     exit(-1)
 
 for everyfile in sys.argv[1:]:
-    """依次处理每个文件,处理路径不存在。"""
-    if not os.path.exists(everyfile):
-        stderr_print("\"{}\" {}".format(everyfile,"is not exist !"))
+    """依次处理每个参数,处理路径不存在或非文件。
+    非文件包含不存在的情况"""
+    if not os.path.isfile(everyfile):
+        stderr_print("\"{}\" {}".format(everyfile,"is not exist or not a file!"))
     try:
         processzip(everyfile)
     except UnicodeEncodeError:
