@@ -6,6 +6,8 @@ alias ll	"ls -ahl"
 alias la	"ls -ashl"   
 alias fbterm  "env LANG=zh_CN.UTF-8 fbterm"
 alias cdh	"cd /home/viw/Downloads/cache"   
+
+set fish_greeting '致虚极，守静笃。'
 set PATH $PATH  /home/viw/.cargo/bin  
 set RUST_SRC_HOME  $HOME/.cargo/rust-source/rust
 set RUST_SRC_PATH  $RUST_SRC_HOME/src
