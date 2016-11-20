@@ -1,17 +1,21 @@
 # Cloud-home-Page
-此项目用于放置个人七零八落的配置文件.
+此项目用于放置个人七零八落的配置文件。
 
 ## Cloud home Page
-浏览器首页,新标签页.
+浏览器首页,新标签页。
 
 ## mpv
-MPV 播放器配置文件.
+MPV 播放器配置文件。
 
 ## config.fish
-fish 配置文件.
+fish 配置文件。
 
 ## .conky.rc
-conky 配置文件,附预览图.
+conky 配置文件,附预览图。
+
+依赖:lm_sensors
+
+获取CPU/GPU的温度,在我的机器上GPU（核显）温度获取不到。
 
 ## bin/mtools.py
 处理路径名/文件GBK编码导致的乱码，并行ping小工具，基于Py3编写(不兼容Py2)。
