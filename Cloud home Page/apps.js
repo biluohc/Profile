@@ -1,9 +1,9 @@
 function deal_urls() {
     var eles = [
-        ["搜狗搜索", "https://www.sogou.com/"],
-        ["谷歌搜索", "https://www.google.com/ncr"],
-        ["Duck", "https://duckduckgo.com/"],
-        ["微软必应", "https://cn.bing.com/"],
+        // ["搜狗搜索", "https://www.sogou.com/"],
+        // ["谷歌搜索", "https://www.google.com/ncr"],
+        // ["Duck", "https://duckduckgo.com/"],
+        // ["微软必应", "https://cn.bing.com/"],
 
         ["ArchWiKi", "https://wiki.archlinux.org/index.php/List_of_applications_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29"],
         ["openSUSE", "https://software.opensuse.org/421/zh_CN"],
