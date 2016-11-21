@@ -2,29 +2,44 @@ function deal_urls() {
     var eles = [
         ["搜狗搜索", "https://www.sogou.com/"],
         ["谷歌搜索", "https://www.google.com/ncr"],
-        ["知乎", "https://www.zhihu.com/"],
+        ["Duck", "https://duckduckgo.com/"],
         ["微软必应", "https://cn.bing.com/"],
+
         ["ArchWiKi", "https://wiki.archlinux.org/index.php/List_of_applications_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29"],
         ["openSUSE", "https://software.opensuse.org/421/zh_CN"],
+        ["维基百科", "https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5"],
         ["CnBeta", "http://www.cnbeta.com/"],
+
+        ["W3S", "http://www.w3school.com.cn/index.html"],
+        ["MDN", "https://developer.mozilla.org/zh-CN/"],
+        ["Py3", "https://docs.python.org/3/"],
+        ["Rust", "https://doc.rust-lang.org/"],
+
+        ["GitHub", "https://github.com/biluohc"],
+        ["V2EX", "https://www.v2ex.com/"],
+        ["知乎", "https://www.zhihu.com/"],
         ["百度贴吧", "http://tieba.baidu.com/home/main?id=155a7773707378696e678148&suofr=userbar"],
+
         ["YouTube", "https://www.youtube.com/"],
         ["AcFun", "http://www.acfun.tv/"],
-        ["哔哩哔哩", "http://www.bilibili.com/"],
         ["网易云", "http://music.163.com/#"],
+        ["哔哩哔哩", "http://www.bilibili.com/"],
+
         ["京东商城", "http://www.jd.com/"],
         ["淘宝网", "https://www.taobao.com/"],
         ["亚马逊", "http://www.amazon.cn/"],
         ["中关村", "http://www.zol.com.cn/"],
+
+        ["百度图片", "http://image.baidu.com/"],
         ["网盘搜", "http://www.wangpansou.cn/"],
-        ["谷歌翻译", "http://translate.google.cn/"],
-        ["维基百科", "https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5"],
         ["盘搜搜", "http://www.pansoso.com/#fromapp"],
-        ["谷歌图片", "https://www.google.com/imghp?hl=zh-CN"],
-        ["Pixiv", "https://www.pixiv.net/"],
-        ["V2EX", "https://www.v2ex.com/"],
         ["淘林网", "http://www.cntaolin.com/"],
 
+
+        ["谷歌翻译", "http://translate.google.cn/"],
+        ["谷歌图片", "https://www.google.com/imghp?hl=zh-CN"],
+        ["TinEye", "https://tineye.com/"],
+        ["搜狗图片", "http://pic.sogou.com/ "],
     ];
 
     //transparent  透明
@@ -56,31 +71,42 @@ function deal_urls() {
 }
 
 function se_rewrite(se_value) {
-    var s0 = "<form action=\"";
-    //s1 action 是搜索引擎链接
-    var s2 = "\" method=\"get\" target=\"_self\" align=\"middle\" style=\"background-color:transparent; text-align:left; font-size:32px; font-weight:bold; margin-left:10%; width:90%; height:70%;text-align:center;border:1px solid transparent;empty-cells:hide;\"> <select id=\"s1\" style=\"background-color:transparent;text-align:left; font-size:32px; font-weight:bold; margin-left:3%; width:6%; height:20%;\" onchange=\"valuechange()\">";
-    //s3 是下拉表单seletc的内容
-    var s4 = " </select> <input type=\"text\" name=\"";
-    //s5 name 是搜索引擎关键词参数
-    var s6 = "\" value=\"";
-    //s7 valua 是搜索框原有值
-    var s8 = "\" maxlength=\"64\" size=\"86\" id=\"word\" style=\"background-color:transparent;width:60%;height:20%;font-size:32px; font-weight:bold;\"><input type=\"submit\" value=\"";
-    //s9是 value 按键/搜索引擎名称
-    var s10 = "\" style=\"background-color:transparent;width:12%;height:20%;font-size:32px; font-weight:bold;\"> </form>";
+    //form表单
+    var form0 = "<form action=\"";
+    // action 是搜索引擎链接
+    var form1 = "\" method=\"get\" target=\"_self\" align=\"middle\" style=\"background-color:transparent; text-align:left; font-size:32px; font-weight:bold; margin-left:8%; width:90%; height:70%;text-align:center;border:1px solid transparent;empty-cells:hide;\">";
 
+    //input 表单
+    var input0 = "<input type=\"text\" name=\"";
+    // name 是搜索引擎关键词参数    
+    var input1 = "\" value=\"";
+    //  origin_value 是搜索框原有值
+    var input2 = "\" maxlength=\"64\" size=\"86\" id=\"word\" style=\"background-color:transparent;width:60%;height:20%;font-size:32px; font-weight:bold;\">";
+
+    //option表单
+    var option0 = "<select id = \"s1\" style=\"background-color:transparent; font-size:32px; font-weight:bold; width:6%; height:20%;\" onchange=\"valuechange()\">";
+    // option下拉表单seletc的内容
+    var option1 = "</select>";
+    //submit 按钮表单
+    var submit0 = "<input type=\"submit\" value=\"搜索\" style=\"background-color:transparent;width:10%;height:20%;font-size:32px; font-weight:bold;\">";
+    //form表单闭合
+    var form2 = "</form>";
+
+    //搜索引擎链接，keyword
     var so = {
-        baidu: ["https://www.baidu.com/s", "word", "百度"],
-        bing: ["https://cn.bing.com/search", "q", "必应"],
-        google: ["https://www.google.com/search", "q", "谷歌"],
-        sogou: ["https://www.sogou.com/web", "query", "搜狗"],
+        baidu: ["https://www.baidu.com/s", "word"],
+        bing: ["https://cn.bing.com/search", "q"],
+        google: ["https://www.google.com/search", "q"],
+        duck: ["https://duckduckgo.com/", "q"],
+        sogou: ["https://www.sogou.com/web", "query"],
     };
-    //下面这句有个选择其它引擎后错位的问题，不知为什么，顺序并没有错
-    //  var ops = document.getElementById('s1').outerHTML;
-    //  硬写替代之,这里只与排序有关，默认搜索引擎为html中的第一个option
+
+    //option 列表 key-value
     var sr = [
         ["baidu", "百度"],
         ["bing", "必应"],
         ["google", "谷歌"],
+        ["duck", "Duck"],
         ["sogou", "搜狗"],
     ];
     var ops = "";
@@ -101,7 +127,7 @@ function se_rewrite(se_value) {
     //  length 产生NaN 数？
     //  var origin_valu = document.getElementById("s1").options;
     //  document.write(sr.length + ops);
-    return s0 + the_value[0] + s2 + ops + s4 + the_value[1] + s6 + origin_value + s8 + the_value[2] + s10;
+    return form0 + the_value[0] + form1 + input0 + the_value[1] + input1 + origin_value + input2 + option0 + ops + option1 + submit0 + form2;
 }
 
 function valuechange() {
@@ -114,7 +140,7 @@ function valuechange() {
 
 function data_show() {
     function get_hour(n) {
-        var hour = (n < 12) ? "上午" : "下午";
+        var hour = (n < 13) ? "上午" : "下午";
         n = (hour === "上午") ? n : n - 12;
         return hour + " " + n;
     }
