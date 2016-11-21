@@ -116,7 +116,11 @@ function data_show() {
     function get_hour(n) {
         var hour = (n < 12) ? "上午" : "下午";
         n = (hour === "上午") ? n : n - 12;
-        return hour +" "+ n;
+        return hour + " " + n;
+    }
+
+    function get_minute(minute) {
+        return (minute < 10) ? "0" + minute : "" + minute;
     }
     //定义星期的描述
     var isnDay = new Array("日", "一", "二", "三", "四", "五", "六");
@@ -124,7 +128,7 @@ function data_show() {
     var now = new Date();
     //定义需要显示的字符串: 年，月,日，星期...
     //getFullYear() getMonth getDate getDay getHours getMinutes getSeconds
-    var msg = (now.getMonth() + 1) + "月" + now.getDate() + "日 星期" + isnDay[now.getDay()] + " " + get_hour(now.getHours()) + ":" + now.getMinutes();
+    var msg = (now.getMonth() + 1) + "月" + now.getDate() + "日 星期" + isnDay[now.getDay()] + " " + get_hour(now.getHours()) + ":" + get_minute(now.getMinutes());
     document.getElementById("head1").innerHTML = msg;
 
 }
