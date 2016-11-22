@@ -81,7 +81,7 @@ function se_rewrite(se_value) {
     // name 是搜索引擎关键词参数    
     var input1 = "\" value=\"";
     //  origin_value 是搜索框原有值
-    var input2 = "\" maxlength=\"64\" size=\"86\" id=\"word\" style=\"background-color:transparent;width:60%;height:20%;font-size:32px; font-weight:bold;\">";
+    var input2 = "\" autofocus=\"autofocus\" maxlength=\"64\" size=\"86\" id=\"word\" style=\"background-color:transparent;width:60%;height:20%;font-size:32px; font-weight:bold;\">";
 
     //option表单
     var option0 = "<select id = \"s1\" style=\"background-color:transparent; font-size:32px; font-weight:bold; width:6%; height:20%;\" onchange=\"valuechange()\">";
@@ -135,7 +135,8 @@ function valuechange() {
     var se_value = objS.options[objS.selectedIndex].value;
     var the_write = se_rewrite(se_value);
     document.getElementById("s2").innerHTML = the_write;
-    data_show();
+    //html5 input 的autofocus只在载入页面时触发
+    document.getElementById('word').focus();
 }
 
 function data_show() {
@@ -159,4 +160,6 @@ function data_show() {
 
 }
 deal_urls();
-data_show();
+
+data_show(); //初始化
+setInterval("data_show()", 1000); //1*1000毫秒更新
