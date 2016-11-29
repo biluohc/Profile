@@ -1,4 +1,4 @@
-function deal_urls() {
+function list_urls() {
     var eles = [
         // ["搜狗搜索", "https://www.sogou.com/"],
         // ["谷歌搜索", "https://www.google.com/ncr"],
@@ -53,10 +53,12 @@ function deal_urls() {
     var style1 = "style=\"width:20%;" + "color:" + colorf1 + ";border:1px solid " + colorf1 + ";\"";
     var astyle = style0;
 
-    var urls = "";
+    //表头，表格版  width表行的宽度,frame表四条边框,all所有元素的边框 style的设置不会被多数浏览器忽视
+    var urls = "<table frame=\"box\" rules=\"all\" cellspacing=\"6\" style=\"color:#0099CC; text-align:left; font-size:48px; font-weight:bold; margin-left:3%; width:80%; height:70%;text-align:center;border:1px solid red;empty-cells:hide;\"><tbody>";
+
+    //表身
     for (i = 0; i < eles.length; i++) {
         // 单元格点击支持+元素点击支持
-        // document.write("<td " + astyle + " onclick=\"window.location.href='" + eles[i][1] + "';\">" + "<a style=\"text-decoration:none;\"" + "href=\"" + eles[i][1] + "\">" + eles[i][0] + "</a> </td>");
         urls += "<td " + astyle + " onclick=\"window.location.href='" + eles[i][1] + "';\">" + "<a style=\"text-decoration:none;\"" + "href=\"" + eles[i][1] + "\">" + eles[i][0] + "</a> </td>";
         if ((i + 1) % 4 === 0) {
             urls += "</tr> <tr>";
@@ -67,10 +69,12 @@ function deal_urls() {
             }
         }
     }
-    document.getElementById("urls").innerHTML = urls;
+    //表尾
+    urls = urls + "</tbody></table>";
+    document.getElementById("url").innerHTML = urls;
 }
 
-function se_rewrite(se_value) {
+function se_rewrite(se_value, input_value) {
     //form表单
     var form0 = "<form action=\"";
     // action 是搜索引擎链接
@@ -80,11 +84,11 @@ function se_rewrite(se_value) {
     var input0 = "<input type=\"text\" name=\"";
     // name 是搜索引擎关键词参数    
     var input1 = "\" value=\"";
-    //  origin_value 是搜索框原有值
-    var input2 = "\" autofocus=\"autofocus\" maxlength=\"64\" size=\"86\" id=\"word\" style=\"background-color:transparent;width:60%;height:20%;font-size:32px; font-weight:bold;\">";
+    //  input_value 是搜索框原有值
+    var input2 = "\" autofocus=\"autofocus\" maxlength=\"64\" size=\"86\" id=\"input\" style=\"background-color:transparent;width:60%;height:20%;font-size:32px; font-weight:bold;\">";
 
     //option表单
-    var option0 = "<select id = \"s1\" style=\"background-color:transparent; font-size:32px; font-weight:bold; width:6%; height:20%;\" onchange=\"valuechange()\">";
+    var option0 = "<select id = \"se\" style=\"background-color:transparent; font-size:32px; font-weight:bold; width:6%; height:20%;\" onchange=\"se_change()\">";
     // option下拉表单seletc的内容
     var option1 = "</select>";
     //submit 按钮表单
@@ -92,23 +96,21 @@ function se_rewrite(se_value) {
     //form表单闭合
     var form2 = "</form>";
 
-    //搜索引擎链接，keyword
-    var so = {
-        baidu: ["https://www.baidu.com/s", "word"],
-        bing: ["https://cn.bing.com/search", "q"],
-        google: ["https://www.google.com/search", "q"],
-        duck: ["https://duckduckgo.com/", "q"],
-        sogou: ["https://www.sogou.com/web", "query"],
-    };
-
-    //option 列表 key-value
+    //搜索引擎，链接，keyword，名字；顺序排列,第一个为默认值
     var sr = [
-        ["baidu", "百度"],
-        ["bing", "必应"],
-        ["google", "谷歌"],
-        ["duck", "Duck"],
-        ["sogou", "搜狗"],
+        ["baidu", "https://www.baidu.com/s", "word", "百度"],
+        ["bing", "https://cn.bing.com/search", "q", "必应"],
+        ["google", "https://www.google.com/search", "q", "谷歌"],
+        ["duck", "https://duckduckgo.com/", "q", "Duck"],
+        ["sogou", "https://www.sogou.com/web", "query", "搜狗"],
     ];
+
+    //option 列表 key-value对象
+    var so = {};
+    for (var i = 0; i < sr.length; i++) {
+        var tmp = sr[i][0];
+        so[tmp] = sr[i];
+    }
     var ops = "";
     var first_index;
     for (var i = 0; i < sr.length; i++) {
@@ -116,27 +118,36 @@ function se_rewrite(se_value) {
             first_index = i;
             continue;
         }
-        ops += "<option value=\"" + sr[i][0] + "\">" + sr[i][1] + "</option>";
+        ops += "<option value=\"" + sr[i][0] + "\">" + sr[i][3] + "</option>";
     }
     //选中的搜索引擎
-    ops = "<option value=\"" + sr[first_index][0] + "\">" + sr[first_index][1] + "</option>" + ops;
+    if (first_index !== undefined) {
+        ops = "<option value=\"" + sr[first_index][0] + "\">" + sr[first_index][3] + "</option>" + ops;
+    }
 
-    var the_value = so[se_value];
+    var the_value = (se_value === "") ? so[sr[0][0]] : so[se_value];
     //保留原搜索框的值
-    var origin_value = document.getElementById("word").value;
-    //  length 产生NaN 数？
-    //  var origin_valu = document.getElementById("s1").options;
-    //  document.write(sr.length + ops);
-    return form0 + the_value[0] + form1 + input0 + the_value[1] + input1 + origin_value + input2 + option0 + ops + option1 + submit0 + form2;
+    return form0 + the_value[1] + form1 + input0 + the_value[2] + input1 + input_value + input2 + option0 + ops + option1 + submit0 + form2;
+
 }
 
-function valuechange() {
-    var objS = document.getElementById("s1");
-    var se_value = objS.options[objS.selectedIndex].value;
-    var the_write = se_rewrite(se_value);
-    document.getElementById("s2").innerHTML = the_write;
-    //html5 input 的autofocus只在载入页面时触发
-    document.getElementById('word').focus();
+
+function se_change() {
+    //null是未定义，undefined是未初始化
+    //取得原有搜索引擎值
+    var object_SE = document.getElementById("se");
+    var se_value = (object_SE === null) ? "" : object_SE.options[object_SE.selectedIndex].value;
+
+    //取得原有INPUT值
+    var object_INPUT = document.getElementById("input");
+    var input_value = (object_INPUT === null) ? "" : object_INPUT.value;
+    // alert(se_value + "||" + input_value);
+
+    var the_write = se_rewrite(se_value, input_value);
+    document.getElementById("form").innerHTML = the_write;
+
+    //给予input文本框元素焦点。html5 input 的autofocus只在载入页面时触发
+    document.getElementById('input').focus();
 }
 
 function data_show() {
@@ -150,16 +161,21 @@ function data_show() {
         return (minute < 10) ? "0" + minute : "" + minute;
     }
     //定义星期的描述
-    var isnDay = new Array("日", "一", "二", "三", "四", "五", "六");
+    var week_day = ["日", "一", "二", "三", "四", "五", "六"];
     //取得当前日期对象
     var now = new Date();
-    //定义需要显示的字符串: 年，月,日，星期...
+    //定义需要显示的字符串: 年，月，日，星期...
     //getFullYear() getMonth getDate getDay getHours getMinutes getSeconds
-    var msg = (now.getMonth() + 1) + "月" + now.getDate() + "日 星期" + isnDay[now.getDay()] + " " + get_hour(now.getHours()) + ":" + get_minute(now.getMinutes());
+    var msg = (now.getMonth() + 1) + "月" + now.getDate() + "日 星期" + week_day[now.getDay()] + " " + get_hour(now.getHours()) + ":" + get_minute(now.getMinutes());
     document.getElementById("head1").innerHTML = msg;
 
 }
-deal_urls();
 
-data_show(); //初始化
+//初始化搜索引擎
+se_change();
+//排列URLs
+list_urls();
+
+//初始化日期
+data_show();
 setInterval("data_show()", 1000); //1*1000毫秒更新

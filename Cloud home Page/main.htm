@@ -20,40 +20,23 @@
             <font color="#666600" size="12" id="head1">Cloud home Page</font>
         </h1>
 
-        <div id="s2">
-            <!--默认搜索引擎 target="_blank" 新标签页打开-->
-            <form action="https://www.baidu.com/s" method="get" target="_self" align="middle" style="background-color:transparent; text-align:left; font-size:32px; font-weight:bold; margin-left:8%; width:90%; height:70%;text-align:center;border:1px solid transparent;empty-cells:hide;">
-                <input type="text" name="word" autofocus="autofocus" maxlength="64" size="86" id="word" style="background-color:transparent;width:60%;height:20%;font-size:32px; font-weight:bold;">
-                <select id="s1" style="background-color:transparent; text-align:left; font-size:32px; font-weight:bold; width:6%; height:20%;" onchange="valuechange()">
-                    <option value="baidu">百度</option> 
-                    <option value="google">谷歌</option>
-                    <option value="bing">必应</option>
-                    <option value="duck">Duck</option>
-                    <option value="sogou">搜狗</option>
-                </select>
-                <input type="submit" value="搜索" style="background-color:transparent;width:10%;height:20%;font-size:32px; font-weight:bold;">
-            </form>
+        <!--搜索引擎表单-->
+        <div id="form">
         </div>
 
         <br/>
-        <p>
-            <div>
-                <!--表格版  width表行的宽度,frame表四条边框,all所有元素的边框 style的设置不会被多数浏览器忽视-->
-                <table frame="box" rules="all" cellspacing="6" style="color:#0099CC; text-align:left; font-size:48px; font-weight:bold; margin-left:3%; width:80%; height:70%;text-align:center;border:1px solid red;empty-cells:hide;">
-                    <tbody id="urls">
-                    </tbody>
-                </table>
-            </div>
-        </p>
-        <div id="s3"> </div>
-        <div align="cen">
+
+        <!--导航URL列表-->
+        <div id="url">
+        </div>
+
+        <!--版权-->
+        <div align="center">
             <br/>
             <br/>
             <br/>
-            <p>
-                <font color="#666600 " size="5"> Cloud home Page @wspsxing
-                </font>
-            </p>
+            <font color="#666600 " size="5 "> Cloud home Page @wspsxing
+            </font>
         </div>
 </body>
 
