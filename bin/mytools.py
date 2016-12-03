@@ -2,6 +2,7 @@
 
 import sys,os,subprocess,re
 from threading import Thread
+import urllib.parse as lp
 
 def stderr_print(msg):
     """标准错误输出"""
@@ -57,12 +58,12 @@ def file_deal(path):
                 try:
                     tmp=i.decode("gbk")
                     fo.write(tmp)
-                    print("GBK decode succeed: ",tmp)
+                    print("GBK decode succeed: ",tmp,end="")
                 except UnicodeDecodeError:
                     stderr_print("\'{}\' not GBK and try to decode to utf8: {}".format(ii,i.decode("utf8")))
                     tmp=i.decode("utf8")
                     fo.write(tmp)
-                    print("utf8 decode succeed: ",tmp)
+                    print("utf8 decode succeed: ",tmp,end="")
                     continue
         # except UnicodeDecodeError:
         #     stderr_print("Is'not GBK file: \"{}\"\n".format(path))
@@ -86,13 +87,13 @@ class ping_list:
             # print(url.url,": ",out)
             resultdict.setdefault(self.url,out)        
         except subprocess.TimeoutExpired as e:
-            stderr_print(str(e))
+            stderr_print(str(e)+"\n")
             exit(-1)
         except subprocess.CalledProcessError as e:
-            stderr_print(str(e))
+            stderr_print(str(e)+"\n")
             exit(-1)
 
-#ping 单子进程太浪费时间了
+#ping 单进程太浪费时间
 #ping子进程列表，ping结果字典
 sublist=[]
 resultdict={}
@@ -134,6 +135,18 @@ elif sys.argv[1]=="-g":
             stderr_print("\"{}\" {}".format(everypath,"is not exist and skip !"))
             continue
         path_deal(everypath)
+
+#url的解码，解码[2:]所有的参数,当路径存在 且解码成功 且解码后路径不存在(此时有警告)时 重命名路径，否则跳过(无警告)
+elif sys.argv[1] =="-l":
+    for entry in sys.argv[2:]:
+        entry_decoded=lp.unquote_plus(entry)
+        print(entry_decoded)
+        if os.path.exists(entry):
+            if entry_decoded != entry:
+                if not os.path.exists(entry_decoded):
+                    os.rename(entry,entry_decoded)
+                else:
+                     stderr_print("\"{}\" {}".format(entry_decoded,"was exist and skip !"))
 
 else:
     stderr_print("Hasn't this option : ".format(sys.argv[1]))

@@ -17,8 +17,8 @@ conky 配置文件,附预览图。
 
 获取CPU/GPU的温度,在我的机器上GPU（核显）温度获取不到。
 
-## bin/mtools.py
-处理路径名/文件GBK编码导致的乱码，并行ping小工具，基于Py3编写(不兼容Py2)。
+## bin/mytools.py
+处理路径名/文件GBK编码导致的乱码，url解码，并行ping小工具，基于Py3编写(不兼容Py2)。
 
 ### -g 选项
 
@@ -37,9 +37,14 @@ conky 配置文件,附预览图。
 
 * 部分非GBK编码的字符也能用GBK解码，请对比结果和源，其中ASCII无不良后果，因为它是大部分编码格式的子集，其中包括GBK,UTF8等　
 
+### -l 选项
+
+url的解码，解码所有参数,依次输出所有解码结果。  
+当路径存在 且解码成功 且解码后路径不存在(此时有警告)时 重命名路径，否则跳过(无警告)。
+
 ### -p[c] 选项
 
-Ping 域名或者ip,注意不含http等协议，或者根路径之外的路径,所花时间取决于花时间最长的那个。
+Ping 域名或者ip,注意不含http等协议，或者根路径之外的路径,所花时间取决于花时间最长的那一个。
 
 c为可选参数，即Ping的次数(count),默认为３
 
@@ -47,7 +52,7 @@ c为可选参数，即Ping的次数(count),默认为３
 
 ### 使用: 
 
-        bin/mtools.py　-g  dir1　dir2 ... dirN
-        bin/mtools.py  -f  file1 file2 ...dirN
-        bin/mtools.py  -p[c]  domain1/ip1 domain2/ip2 domainN/ipN
+        bin/mytools.py　-g  dir1　dir2 ... dirN
+        bin/mytools.py  -f  file1 file2 ...dirN
+        bin/mytools.py  -p[c]  domain1/ip1 domain2/ip2 domainN/ipN
 
