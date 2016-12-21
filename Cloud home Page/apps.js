@@ -10,8 +10,8 @@ function list_urls() {
         ["维基百科", "https://zh.wikipedia.org/wiki/Wikipedia:%E9%A6%96%E9%A1%B5"],
         ["CnBeta", "http://www.cnbeta.com/"],
 
+        ["W3C", "http://www.w3cschool.cn/"],
         ["W3S", "http://www.w3school.com.cn/index.html"],
-        ["MDN", "https://developer.mozilla.org/zh-CN/"],
         ["Py3", "https://docs.python.org/3/"],
         ["Rust", "https://doc.rust-lang.org/"],
 

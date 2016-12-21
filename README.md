@@ -54,5 +54,6 @@ c为可选参数，即Ping的次数(count),默认为３
 
         bin/mytools.py　-g  dir1　dir2 ... dirN
         bin/mytools.py  -f  file1 file2 ...dirN
+        bin/mytools.py　-l  url1　url2 ... urlN        
         bin/mytools.py  -p[c]  domain1/ip1 domain2/ip2 domainN/ipN
 
