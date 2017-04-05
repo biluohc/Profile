@@ -1,6 +1,6 @@
 # Favorites(Without forking)
 
-## [**Rust**](https://www.rust-lang.org): A safe, concurrent, practical language.
+## [**Rust**](https://github.com/rust-lang/rust): A safe, concurrent, practical language.
 
 * [**rust-ffi-omnibus**](https://github.com/shepmaster/rust-ffi-omnibus): A collection of examples of using code written in Rust from other languages
 
