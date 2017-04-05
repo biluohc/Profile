@@ -12,8 +12,8 @@ function list_urls() {
 
         ["W3C", "http://www.w3cschool.cn/"],
         ["W3S", "http://www.w3school.com.cn/index.html"],
-        ["Py3", "https://docs.python.org/3/"],
-        ["Rust", "https://doc.rust-lang.org/"],
+        ["Go", "https://go-zh.org/doc/"],
+        ["Docs.rs", "https://docs.rs/"],
 
         ["GitHub", "https://github.com/biluohc"],
         ["V2EX", "https://www.v2ex.com/"],
