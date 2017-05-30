@@ -1,28 +1,34 @@
-#cat ~/.cargo/config 
-#http://doc.crates.io/config.html
+[alias]
+if = "info" 
 
+d = "doc"
+f = "fmt"
+
+n = "new --bin"
+new = "new"
+
+b = "build"
+br = "build  --release"
+
+r = "run"
+rr = "run --release"
+
+t = "test"
+e = "build --example"
+er = "run --example"
+erb = "build --release --example"
+err = "run --release --example"
+
+[build]
+target-dir = "/home/mxo/.cache/mozilla/cargo"
+
+[http]
+timeout = 60000
+
+[registry]
+token = "QfCe8pK6w31q7fo7sIFTQv5HJKnWtmGp"
 [source.crates-io]
 registry = "git://github.com/rust-lang/crates.io-index"
 
-#ustc炸了只需注释下面一行,cargo-vendor可以把依赖下载到本地。
-#replace-with = 'ustc'
 [source.ustc]
 registry = "git://mirrors.ustc.edu.cn/crates.io-index"
-
-[http]
-#proxy = "127.0.0.1:1080"       # HTTP proxy to use for HTTP requests (defaults to none)
-timeout = 60000     # Timeout for each HTTP request, in milliseconds
-#cainfo = "cert.pem" # Path to Certificate Authority (CA) bundle (optional)
-
-[build]
-target-dir = "/home/viw/.cache/mozilla/cargo"     #指定编译目标目录,remdisk failed tp complian win32sys(windows)
-
-[alias]
-n = "new --bin"
-new = "new"
-b = "build"
-br =  "build  --release"
-t = "test"
-r  =  "run"
-rr = "run --release"
-d = "doc"

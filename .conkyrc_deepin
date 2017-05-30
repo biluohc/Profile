@@ -1,0 +1,106 @@
+# Conky settings # 路径 ~/.conkyrc 
+conky.config = {
+	
+    alignment = 'top_left',
+    background = true,
+
+	double_buffer = true,
+	own_window = true,
+	own_window_transparent = true,
+	own_window_type = normal,
+	own_window_hints = undecorated,below,sticky,skip_taskbar,skip_pager,
+	own_window_argb_visual = true,
+	own_window_transparent = true,
+
+    border_width = 1,
+    cpu_avg_samples = 2,
+	diskio_avg_samples = 2,
+	default_color = 'grey',
+    default_outline_color = 'purple',
+    default_shade_color = '8000FF',
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = true,
+    use_xft = true,
+
+	font = '思源黑体 CN:style=Bold:size=16',
+    gap_x = 6,
+    gap_y = 38,
+    minimum_height = 5,
+	minimum_width = 5,
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_stderr = false,
+    extra_newline = false,
+    own_window = true,
+    own_window_class = 'Conky',
+    own_window_type = 'desktop',
+    stippled_borders = 1,
+    update_interval = 1,
+    uppercase = false,
+    use_spacer = 'none',
+    show_graph_scale = false,
+    show_graph_range = false
+}
+
+conky.text = [[
+#-------------------
+#alignc (num)  文本中心对齐 alignr (num)   文本右对齐
+#$hr 分割线  $stippled_hr在当前行余下的空间输出虚线
+#-------------------
+${font 思源黑体 CN:style=Bold:size=18}${color FF9900}${time %b%d日 周%a}${alignr}${time %p%l:%M:%S} $font $color
+$nodename - $sysname $kernel on $machine 
+#-------------------
+#-------------------System
+#-------------------
+${color FF9900}${font 思源黑体 CN:style=Bold:size=20}System $font
+${color grey}Uptime:${color green} $uptime ${alignr} ${exec whoami} @ $nodename
+${color}Load:${color green}${loadavg}${alignr}$color Users: 	${color green} ${exec who|wc -l} 
+#${color grey}Frequency (in MHz): $color $freq
+#${color grey}Frequency (in GHz): $color $freq_g
+${color}CPU:	${color green}${exec sensors |grep "id 0" |cut -c 18-21}°C ${alignr} ${color}GPU:	${color green}${exec sensors |grep 'id 1' |cut -c 18-21}°C
+#${color grey}RAM Usage:$color $mem/$memmax - $memperc% ${membar 4} ${menbar 高(,宽)}
+${color grey}RAM Usage:${color green} $memperc% ${alignr} $mem/$memmax
+${color grey}${color FF3300} ${membar 10}
+#${color grey}Swap Usage:$color $swap/$swapmax - $swapperc% ${swapbar 4}
+#${color grey}CPU Usage:$color $cpu% ${cpubar 4}
+${color grey}CPU Usage:${color green} $cpu% ${alignr} $freq_g GHz
+${color grey}${color FF3300} ${cpubar 10}
+#core0: ${cpu cpu0}%${cpubar cpu0}
+#-------------------
+#-------------------Disk
+#-------------------
+${color}${color FF9900}${font 思源黑体 CN:style=Bold:size=20}Disk $font
+${color} /   ${alignr} ${color green}${fs_used /}/${fs_size /} 
+#${color FF6633} ${fs_bar 6 /}
+$color home  ${alignr} ${color green}${fs_used /home}/${fs_size /home} 
+#${color FF6633} ${fs_bar 6 /home}
+$color Read:${color green} ${diskio_read} ${color grey}  ${alignr}  Write:${color green} ${diskio_write}
+#-------------------
+#-------------------Network
+#-------------------
+${color FF9900}${font 思源黑体 CN:style=Bold:size=20}Network $font
+${color}en:${color green} ${addrs enp7s0}  ${alignr} $color wl:${color green} ${addrs wlp8s0}
+${color}en Up:${color green} ${upspeed enp7s0} ${alignr} ${color grey}en Down:${color green} ${downspeed enp7s0}
+${color}TUp:${color green} ${totalup enp7s0} ${alignr} ${color grey}TDown:${color green} ${totaldown enp7s0}
+${color}wl Up:${color green} ${upspeed wlp8s0} ${alignr} ${color grey}wl Down:${color green} ${downspeed wlp8s0}
+${wireless_mode wlp8s0}		${alignr}${wireless_essid wlp8s0}  ${wireless_link_qual_perc wlp8s0}%
+#
+#ip a 得到网卡名
+#${wireless_bitrate wlp8s0}无线连接速率 ${wireless_link_qual wlp8s0}无线信号强度
+#网络地址,addr/addrs均可
+#$gw_iface - $gw_ip   默认网卡+路由地址 
+#-------------------
+#-------------------Processes
+#-------------------
+${color FF9900}${font 思源黑体 CN:style=Bold:size=20}Processes $font
+${color grey}Processes:$color $processes  ${alignr}${color grey}Running:$color $running_processes
+${color grey}Name              		${alignr}PID      U%   M%
+${color lightgrey} ${top name 1} ${alignr}${top pid 1} ${top cpu 1}  ${top mem 1}
+${color lightgrey} ${top name 2} ${alignr}${top pid 2} ${top cpu 2}  ${top mem 2}
+${color lightgrey} ${top name 3} ${alignr}${top pid 3} ${top cpu 3}  ${top mem 3}
+#name 太长&进程排序 导致闪屏.top按照cpu占用,top_mem按内存占用从大到小排序当前进程。
+]]
+ 
