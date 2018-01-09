@@ -1,26 +1,19 @@
-# /dev/sda5		the different btrfs sub_volume 
-UUID=b754f680-b9c3-433c-87cd-44b509148f5d	 /         	btrfs      	rw,relatime,compress-force=lzo,ssd,space_cache,autodefrag,subvol=@opensuse	0 1
-#UUID=b754f680-b9c3-433c-87cd-44b509148f5d	 /         	btrfs      	rw,relatime,compress-force=lzo,ssd,space_cache,autodefrag,subvol=@opensuse-  0 1
-# /dev/sda1		EFI 分区
-UUID=3675-DA6B		/boot/grub	vfat		rw,fmask=0022,dmask=0022,errors=remount-ro	0 2
-
-# /dev/sda8
-UUID=dd5ea128-df4a-4c98-aa4a-01dfe9f9e167	/home     	xfs       	rw,relatime,attr2,inode64,noquota	  0 2
+UUID=ed460d67-3ac2-4151-aab4-1337c329f2d8 /                    btrfs      ssd,compress=lzo      0 0
+UUID=6B5B-DCD8       /boot/efi            vfat       umask=0002,utf8=true  0 0
+/dev/mapper/cr_ata-TEKISM_PER742TB_128GB_TNB0E2AA00022-part6 /home                xfs        nofail                0 2
 
 #/dev/sdb2  #uid,gid  $id username
-UUID=B23AF8CD3AF89019           /home/viw/ir应用       ntfs-3g    auto,noatime,uid=1000,gid=100               0 0
+UUID=B23AF8CD3AF89019           /home/mxo/ir拂晓       ntfs-3g    auto,noatime,uid=1000,gid=100               0 0
 #/dev/sdb4
-UUID=0DDB188A0DDB188A            /home/viw/is尘曦     ntfs-3g    auto,noatime,uid=1000,gid=100               0 0
+UUID=0DDB188A0DDB188A            /home/mxo/is尘曦     ntfs-3g    auto,noatime,uid=1000,gid=100               0 0
 #/dev/sdb5
-UUID=744676BA46767CA4            /home/viw/it雷雨      ntfs-3g     auto,noatime,uid=1000,gid=100                0 0
+UUID=744676BA46767CA4            /home/mxo/it雷雨      ntfs-3g     auto,noatime,uid=1000,gid=100                0 0
 #/dev/sdb
-UUID=C8FAF367FAF34FE4   	      /home/viw/iw暮叶       ntfs-3g      auto,noatime,uid=1000,gid=100         0 0
+UUID=C8FAF367FAF34FE4   	      /home/mxo/iw暮叶       ntfs-3g      auto,noatime,uid=1000,gid=100         0 0
 
 #tmpfs  mode=6777(umask=0022)   7=1-粘滞位+2-setgid+4-setuid,缺省7
-tmpfs					/tmp				tmpfs   defaults,uid=1000,gid=100    									0 0
-tmpfs					/var/cache/zypp						tmpfs		defaults										0 0
-tmpfs              	/home/viw/.cache/mozilla			tmpfs   auto,size=1024M,uid=1000,gid=100  		0 0 
-tmpfs 		     	/home/viw/Downloads/cache    	tmpfs	auto,mode=6777,size=6144M,uid=1000,gid=100      0 0
+tmpfs			/tmp				tmpfs   defaults,uid=1000,gid=100   			0 0
+tmpfs			/var/cache/zypp			tmpfs	defaults					0 0
+tmpfs              	/home/mxo/.cache/mozilla	tmpfs   auto,size=1024M,uid=1000,gid=100  		0 0 
+tmpfs 		     	/home/mxo/Downloads/cache    	tmpfs	auto,mode=6777,size=6144M,uid=1000,gid=100      0 0
 
-#advanced set mount index
-/dev/disk/by-uuid/10A6967BA69660D0 /mnt/winOS auto nosuid,nodev,nofail,noauto 0 0

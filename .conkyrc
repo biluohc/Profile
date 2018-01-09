@@ -42,7 +42,7 @@ conky.config = {
     uppercase = false,
     use_spacer = 'none',
     show_graph_scale = false,
-    show_graph_range = false
+    show_graph_range = false,
 }
 
 conky.text = [[
@@ -60,7 +60,7 @@ ${color grey}Uptime:${color green} $uptime ${alignr} $USERNAME @ $nodename
 ${color}Load:${color green}${loadavg}${alignr}$color Users: 	${color green} ${exec who|wc -l} 
 #${color grey}Frequency (in MHz): $color $freq
 #${color grey}Frequency (in GHz): $color $freq_g
-${color}CPU:	${color green}${exec sensors |grep "id 0" |cut -c 18-21}°C ${alignr} ${color}GPU:	${color green}${exec sensors |grep 'id 1' |cut -c 18-21}°C
+${color}CPU:	${color green}${exec sensors |grep 'id 0:'|grep -Po '([0-9]+\.[0-9])°C'|head -n 1} ${alignr} ${color}GPU:	${color green}${exec sensors |grep '^Package id 1'|grep -Po '([0-9]+\.[0-9])'|head -n 1}°C
 #${color grey}RAM Usage:$color $mem/$memmax - $memperc% ${membar 4} ${menbar 高(,宽)}
 ${color grey}RAM Usage:${color green} $memperc% ${alignr} $mem/$memmax
 ${color grey}${color FF3300} ${membar 10}
@@ -82,10 +82,11 @@ $color Read:${color green} ${diskio_read} ${color grey}  ${alignr}  Write:${colo
 #-------------------Network
 #-------------------
 ${color FF9900}${font 思源黑体 CN:style=Bold:size=20}Network $font
-${color}en:${color green} ${addrs enp7s0}  ${alignr} $color wl:${color green} ${addrs wlp8s0}
-${color}en Up:${color green} ${upspeed enp7s0} ${alignr} ${color grey}en Down:${color green} ${downspeed enp7s0}
-${color}TUp:${color green} ${totalup enp7s0} ${alignr} ${color grey}TDown:${color green} ${totaldown enp7s0}
-${color}wl Up:${color green} ${upspeed wlp8s0} ${alignr} ${color grey}wl Down:${color green} ${downspeed wlp8s0}
+${color}eth0:${color green} ${addrs enp7s0}  ${alignr} $color wlan0:${color green} ${addrs wlp8s0}
+${color}Up:${color green} ${upspeed enp7s0} ${alignr} ${color}Up:${color green} ${upspeed wlp8s0} 
+${color grey}Down:${color green} ${downspeed enp7s0} ${alignr} ${color grey}Down:${color green} ${downspeed wlp8s0}
+${color}TUp:${color green} ${totalup enp7s0} ${alignr} ${color grey}TUp:${color green} ${totalup wlp8s0}
+${color}TDown:${color green} ${totaldown enp7s0} ${alignr} ${color grey}TDown:${color green} ${totaldown wlp8s0}
 ${wireless_mode wlp8s0}		${alignr}${wireless_essid wlp8s0}  ${wireless_link_qual_perc wlp8s0}%
 #
 #ip a 得到网卡名
@@ -104,3 +105,4 @@ ${color lightgrey} ${top name 3} ${alignr}${top pid 3} ${top cpu 3}  ${top mem 3
 #name 太长&进程排序 导致闪屏.top按照cpu占用,top_mem按内存占用从大到小排序当前进程。
 ]]
  
+

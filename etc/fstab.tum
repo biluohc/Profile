@@ -1,0 +1,19 @@
+UUID=1429465c-03e0-4d49-94ca-4d7a4e0a0720 /                    ext4       acl,user_xattr        1 1
+UUID=BA8C-266A       /boot/efi            vfat       umask=0002,utf8=true  0 0
+UUID=dd5ea128-df4a-4c98-aa4a-01dfe9f9e167 /home                xfs        defaults              1 2
+
+
+#/dev/sdb2  #uid,gid  $id username
+UUID=B23AF8CD3AF89019           /home/mxo/ir拂晓      ntfs-3g    auto,noatime,uid=1000,gid=100               0 0
+#/dev/sdb4
+UUID=0DDB188A0DDB188A            /home/mxo/is尘曦     ntfs-3g    auto,noatime,uid=1000,gid=100               0 0
+#/dev/sdb5
+UUID=744676BA46767CA4            /home/mxo/it雷雨     ntfs-3g    auto,noatime,uid=1000,gid=100               0 0
+#/dev/sdb
+UUID=C8FAF367FAF34FE4   	 /home/mxo/iw暮叶     ntfs-3g    auto,noatime,uid=1000,gid=100                  0 0
+
+#tmpfs  mode=6777(umask=0022)   7=1-粘滞位+2-setgid+4-setuid,缺省7
+tmpfs			/tmp				tmpfs   defaults,uid=1000,gid=100    			0 0
+tmpfs			/var/cache/zypp/packages		tmpfs	defaults					0 0
+tmpfs              	/home/mxo/.cache/mozilla	tmpfs   auto,size=1024M,uid=1000,gid=100  		0 0 
+tmpfs 		     	/home/mxo/Downloads/cache    	tmpfs	auto,mode=6777,size=6144M,uid=1000,gid=100      0 0

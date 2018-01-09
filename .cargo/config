@@ -1,5 +1,6 @@
 [alias]
 if = "info" 
+re = "readme"
 
 d = "doc"
 f = "fmt"
@@ -19,16 +20,23 @@ er = "run --example"
 erb = "build --release --example"
 err = "run --release --example"
 
+pkg = "install-update"
+
 [build]
 target-dir = "/home/mxo/.cache/mozilla/cargo"
 
-[http]
-timeout = 60000
+# [http]
+# proxy = "127.0.0.1:1080"
+# timeout = 60000
 
-[registry]
-token = "QfCe8pK6w31q7fo7sIFTQv5HJKnWtmGp"
-[source.crates-io]
-registry = "git://github.com/rust-lang/crates.io-index"
+#[source.crates-io]
+#registry = "git://github.com/rust-lang/crates.io-index"
+#[source.ustc]
+#registry = "git://mirrors.ustc.edu.cn/crates.io-index"
 
-[source.ustc]
-registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+# [source.crates-io]
+# replace-with = 'ustc'
+# [source.ustc]
+# registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+# registry = "https://mirrors.ustc.edu.cn/crates.io-index"
+
