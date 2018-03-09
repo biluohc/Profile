@@ -13,7 +13,7 @@ fish 配置文件。
 ## .conky.rc
 conky 配置文件,附预览图。
 
-依赖:lm_sensors
+依赖: sensors
 
 获取CPU/GPU的温度,在我的机器上GPU（核显）温度获取不到。
 

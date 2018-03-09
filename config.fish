@@ -55,11 +55,11 @@ set PATH $PATH  $HOME/ghc/bin
 
 # 终端透明度，fish的math好残， 乘法都不支持，更别说进制了。。
 # 80那个数越小越透明
-if test -n "$WINDOWID"; 
+if test -n "$WINDOWID";
+    # 如果有那个变量就不重复操作，否则会报错
+    and test -z "$_xtmp";
     and set _xtmp (echo 'ibase=16; obase=A; FFFFFFFF'  |bc); 
     and set _xtmp (echo "ibase=10; obase=16; $_xtmp*80/100" |bc); 
     and xprop -id "$WINDOWID" -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY "0x$_xtmp";
-    # 清除临时环境变量
-    set -e _xtmp; 
 end;
 
