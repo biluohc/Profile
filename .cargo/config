@@ -20,7 +20,7 @@ er = "run --example"
 erb = "build --release --example"
 err = "run --release --example"
 
-pkg = "install-update"
+up = "install-update"
 
 [build]
 target-dir = "/home/mxo/.cache/mozilla/cargo"

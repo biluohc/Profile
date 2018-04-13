@@ -37,7 +37,8 @@ set RUST_SRC_HOME  $HOME/.cargo/rust-source/rust
 set RUST_SRC_PATH  $RUST_SRC_HOME/src
 
 # yarn使用yarn的rpm源， node使用tum的，足够新。
-# https://yarnpkg.com/zh-Hans/docs/install
+# https://yarnpkg.com/zh-Hans/docs/install 未签名签名，每次刷新源都报警。。
+# zypper ar -fc http://download.opensuse.org/repositories/Virtualization:/containers:/Portus/openSUSE_Tumbleweed/ Yarn
 set PATH $PATH /home/mxo/.yarn/bin
 
 # go 
@@ -46,12 +47,18 @@ set PATH $PATH  $GOROOT/bin
 set PATH $PATH  $HOME/go/bin
 set -x  GOPATH  $HOME/go:$HOME/Documents/languages/go:$HOME/Downloads/cache
 
-# Haskell
-set PATH $PATH  $HOME/ghc/bin
+# Haskell -> Idris
+# sudo zypper in -t pattern haskell_platform
+# cabal update; cabal install idris
+# http://idris-zh.readthedocs.io/zh_CN/latest/tutorial/starting.html
+# https://github.com/idris-lang/Idris-dev/wiki/Idris-on-Debian
+set PATH $PATH $HOME/.cabal/bin/
 
 # kotlin
 # set -x  SDKMAN_DIR /home/mxo/.sdkman
 # set PATH $PATH /home/mxo/.sdkman/candidates/kotlin/current/bin
+set PATH $PATH /home/mxo/.AndroidStudio3.0/config/plugins/Kotlin/kotlinc/bin
+
 
 # 终端透明度，fish的math好残， 乘法都不支持，更别说进制了。。
 # 80那个数越小越透明
@@ -63,3 +70,6 @@ if test -n "$WINDOWID";
     and xprop -id "$WINDOWID" -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY "0x$_xtmp";
 end;
 
+# if test (ps -aux|grep fht2p|wc -l) -le 2;
+#     fht2p &;
+# end;
