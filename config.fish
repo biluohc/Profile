@@ -69,7 +69,3 @@ if test -n "$WINDOWID";
     and set _xtmp (echo "ibase=10; obase=16; $_xtmp*80/100" |bc); 
     and xprop -id "$WINDOWID" -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY "0x$_xtmp";
 end;
-
-# if test (ps -aux|grep fht2p|wc -l) -le 2;
-#     fht2p &;
-# end;
