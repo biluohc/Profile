@@ -27,10 +27,6 @@ set -x PGDATA  /var/lib/pgsql/data
 # vagga
 set PATH $PATH  ~/vagga/bin
 
-# rls
-set -x LD_LIBRARY_PATH  /~/.multirust/toolchains/nightly-x86_64-unknown-linux-gnu/lib
-# set -x RLS_ROOT /Source/rls
-
 set -x RUST_BACKTRACE  1 
 set PATH $PATH  ~/.cargo/bin  
 set RUST_SRC_HOME  $HOME/.cargo/rust-source/rust
@@ -54,18 +50,21 @@ set -x  GOPATH  $HOME/go:$HOME/Documents/languages/go:$HOME/Downloads/cache
 # https://github.com/idris-lang/Idris-dev/wiki/Idris-on-Debian
 set PATH $PATH $HOME/.cabal/bin/
 
-# kotlin
-# set -x  SDKMAN_DIR /home/mxo/.sdkman
-# set PATH $PATH /home/mxo/.sdkman/candidates/kotlin/current/bin
-set PATH $PATH /home/mxo/.AndroidStudio3.0/config/plugins/Kotlin/kotlinc/bin
+# if test (ps -aux|grep fht2p|wc -l) -le 2;
+#     fht2p &;
+# end;
 
-
+# wayland+3.28就彻底没有id, xorg+3.28+就没有这个环境变量了，感觉Gnome好脑残，原生支持透明多好啊。。
+if test -z "$WINDOWID"
+    set -x WINDOWID (wmctrl -lx |grep -e 'gnome-terminal-server\.Gnome-terminal.*'|awk '{ print $1 }');
+end
 # 终端透明度，fish的math好残， 乘法都不支持，更别说进制了。。
 # 80那个数越小越透明
 if test -n "$WINDOWID";
-    # 如果有那个变量就不重复操作，否则切换shell回fish会报错
+    # 如果有那个变量就不重复操作，否则Fish会报错
     and test -z "$_xtmp";
     and set _xtmp (echo 'ibase=16; obase=A; FFFFFFFF'  |bc); 
     and set _xtmp (echo "ibase=10; obase=16; $_xtmp*80/100" |bc); 
     and xprop -id "$WINDOWID" -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY "0x$_xtmp";
 end;
+
