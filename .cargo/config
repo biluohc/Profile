@@ -5,8 +5,7 @@ re = "readme"
 d = "doc"
 f = "fmt"
 
-n = "new --bin"
-new = "new"
+n = "new --lib"
 
 b = "build"
 br = "build  --release"
@@ -15,6 +14,8 @@ r = "run"
 rr = "run --release"
 
 t = "test"
+tr = "test --release"
+
 e = "build --example"
 er = "run --example"
 erb = "build --release --example"
@@ -29,14 +30,15 @@ target-dir = "/home/mxo/.cache/mozilla/cargo"
 # proxy = "127.0.0.1:1080"
 # timeout = 60000
 
-#[source.crates-io]
-#registry = "git://github.com/rust-lang/crates.io-index"
-#[source.ustc]
-#registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+[source.crates-io]
+replace-with = 'sjtu'
 
-# [source.crates-io]
-# replace-with = 'ustc'
-# [source.ustc]
-# registry = "git://mirrors.ustc.edu.cn/crates.io-index"
-# registry = "https://mirrors.ustc.edu.cn/crates.io-index"
+[source.ustc]
+registry = "https://mirrors.ustc.edu.cn/crates.io-index/"
+
+[source.sjtu]
+registry = "https://mirrors.sjtug.sjtu.edu.cn/git/crates.io-index"
+
+[source.rustcc]
+registry = "https://code.aliyun.com/rustcc/crates.io-index.git"
 
